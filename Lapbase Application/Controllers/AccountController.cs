@@ -13,25 +13,29 @@ using Lapbase_Application.Models;
 
 namespace Lapbase_Application.Controllers
 {
-    public class HomeController : Controller
+    public class AccountController : Controller
     {
-        public  ActionResult Index()
+        test t1 = new test();
+        public ActionResult Login()
         {
 
+            //bool b1 =
+            t1.b = AuthenticateUser("test", "Dhru");
+            return View(t1);
 
-            //#region public bool AuthenticateUser(string username, string password)
-            //public bool AuthenticateUser(string username, string password)
-            //{
+
+        }
+        //#region public bool AuthenticateUser(string username, string password)
+        public bool AuthenticateUser(string username, string password)
+        {
             string domainName = System.Configuration.ConfigurationManager.AppSettings["Domain Name"];
-            string username = System.Configuration.ConfigurationManager.AppSettings["User ID"];
-            string password = System.Configuration.ConfigurationManager.AppSettings["User Password"];
             string domainAndUsername = string.Format(@"{0}\{1}", domainName, username);
             string ldapPath = string.Format("LDAP://" + domainName);
-            test t1 = new test();
 
-           Boolean userMustChangePassword = false;
 
-           Boolean userAccountIsExpired = false;
+            Boolean userMustChangePassword = false;
+            Boolean userAccountIsExpired = false;
+            bool authentic = false;
 
 
             try
@@ -41,16 +45,16 @@ namespace Lapbase_Application.Controllers
 
                 DirectoryEntry entry = new DirectoryEntry(ldapPath, username, password);
 
-                PrincipalContext context = new PrincipalContext(ContextType.Domain,domainName,username,password);
+                PrincipalContext context = new PrincipalContext(ContextType.Domain, domainName);
 
-                UserPrincipal p = UserPrincipal.FindByIdentity(context, IdentityType.SamAccountName,"test2");
+                UserPrincipal p = UserPrincipal.FindByIdentity(context, IdentityType.SamAccountName, "test2");
 
                 if (p.AccountExpirationDate.HasValue)
                 {
                     if (p.AccountExpirationDate < DateTime.Now)
 
-                           userAccountIsExpired = true;
-                   
+                        userAccountIsExpired = true;
+
                 }
 
                 if (!p.LastPasswordSet.HasValue)
@@ -61,35 +65,36 @@ namespace Lapbase_Application.Controllers
                         userMustChangePassword = true;
                 }
 
-                if(!userMustChangePassword & !userAccountIsExpired)
+                if (!userMustChangePassword & !userAccountIsExpired)
                 {
                     object obj = entry.NativeObject;
 
-                    t1.s = "valid";
+
+                    authentic = true;
 
                 }
                 else
                 {
-                    t1.s = "invalid";
+
+                    authentic = false;
+
                 }
 
 
             }
 
-                    catch (Exception ex)
+            catch (Exception ex)
 
-                    {
+            {
 
-               // throw ex;
-                t1.s = ""+ex.Message;
-                   
-                    }
-
-            return View(t1);
-
-                }
-
-                
+                // throw ex;
+                t1.message = "" + ex.Message;
 
             }
+
+            return authentic;
+
+        }
+
     }
+}
