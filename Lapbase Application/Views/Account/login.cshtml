@@ -2,15 +2,22 @@
 @{
     ViewBag.Title = "Home Page";
 }
-
-<div class="jumbotron">
-    <h1>LapBase</h1>
-    <p class="lead">
-
-        
-     @Model.b
-     @Model.message
-
-    </p>
-</div>
-
+<html>
+<head>
+    <title>Lapbase Login</title>
+   
+</head>
+<body>
+    <div class="login-page">
+        <div class="form">
+            <form class="forgot-password">
+                <input type="text" placeholder="user name" />
+                <input type="text" placeholder="password" />
+                <button>Login</button>
+                @Model.b
+                @Model.message
+            </form>
+        </div>
+    </div>
+</body>
+</html>

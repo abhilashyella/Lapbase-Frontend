@@ -20,7 +20,7 @@ namespace Lapbase_Application.Controllers
         {
 
             //bool b1 =
-            t1.b = AuthenticateUser("test", "Dhru");
+            t1.b = AuthenticateUser("abhilash.y", "Lat@tm123");
             return View(t1);
 
 
