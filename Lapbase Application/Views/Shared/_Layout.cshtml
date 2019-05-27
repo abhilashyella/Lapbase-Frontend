@@ -1,26 +1,23 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    <link href="~/Content/loginForm.css" rel="stylesheet" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"> 
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Master.css" rel="stylesheet" />
+    <script src="~/Scripts/Login_page.js"></script>
+    <link href="~/Content/Fonts.css" rel="stylesheet" />
 </head>
 <body>
-    
+    <header class="header">
+        <div class="headerdiv">
+            
+        </div>
+    </header>
+    @RenderBody()
+   
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Lapbase Application</p>
-        </footer>
-    </div>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
 </body>
 </html>
