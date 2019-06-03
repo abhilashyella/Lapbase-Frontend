@@ -16,38 +16,45 @@ namespace Lapbase_Application.Controllers
     public class AccountController : Controller
     {
         test t1 = new test();
+       
         public ActionResult Login()
         {
 
-            //bool b1 =
-            t1.b = AuthenticateUser("abhilash.y", "Lat@tm123");
-            return View(t1);
+           String usernamef = t1.username;
+           String passwordf = t1.password;
+           AuthenticateUser("abhilash.y", "Lat@123");
+            return View();
+        }
+        public ActionResult setusernameandpassword(String username,String password)
+        {
+            return Content(password);
+        }
 
-
+        public ActionResult login1()
+        {
+            String usernamef = t1.username;
+            String passwordf = t1.password;
+            AuthenticateUser(usernamef, passwordf);
+            return View();
         }
         //#region public bool AuthenticateUser(string username, string password)
+        
         public bool AuthenticateUser(string username, string password)
         {
             string domainName = System.Configuration.ConfigurationManager.AppSettings["Domain Name"];
             string domainAndUsername = string.Format(@"{0}\{1}", domainName, username);
             string ldapPath = string.Format("LDAP://" + domainName);
-
-
             Boolean userMustChangePassword = false;
             Boolean userAccountIsExpired = false;
             bool authentic = false;
-
-
             try
 
             {
-
-
                 DirectoryEntry entry = new DirectoryEntry(ldapPath, username, password);
 
-                PrincipalContext context = new PrincipalContext(ContextType.Domain, domainName);
+                PrincipalContext context = new PrincipalContext(ContextType.Domain, domainName, "abhilash.y", "Lat@tm123");
 
-                UserPrincipal p = UserPrincipal.FindByIdentity(context, IdentityType.SamAccountName, "test2");
+                UserPrincipal p = UserPrincipal.FindByIdentity(context, IdentityType.SamAccountName,username);
 
                 if (p.AccountExpirationDate.HasValue)
                 {
@@ -87,8 +94,8 @@ namespace Lapbase_Application.Controllers
 
             {
 
-                // throw ex;
-                t1.message = "" + ex.Message;
+                 throw ex;
+               //t1.message = "" + ex.Message;
 
             }
 

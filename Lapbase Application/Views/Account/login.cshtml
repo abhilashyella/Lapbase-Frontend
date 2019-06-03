@@ -4,53 +4,39 @@
 }
 <html>
 <head>
-    <title>Lapbase Login</title>
-   
+    <title>Lapbase Login</title>  
 </head>
 <body>
     <div class="container-1">
-       
-        <div class="left">
-            
-        </div>
-        <div class="right">
-            <div class="formbox">
-                <fieldset style="font-size: medium; width: 356px;">
-                    &nbsp;&nbsp;&nbsp;&nbsp; <legend style="font-size:larger"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Connect To LabpBase</b></legend>
-
-                    <br />
-
-                    <b>Email</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                    <input id="txtuname" type="text" /><br />
-
-                    <br />
-
-                    <b>Password</b>&nbsp;&nbsp;
+    <div class="left">
+    </div>
+            <div class="right">
+                <div class="formbox">
+                    <fieldset style="font-size: medium; width: 356px;">
 
 
-
-                    <input id="Pwd" type="password" /><br />
-
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" id="frgtpswd">Forgot Password?</a>
-                    <br />
-                    <br />
-                    <br/>
-
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp; <legend style="font-size:larger"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Connect To LapBase</b></legend>
+                        <br />
+                        <form action="setusernameandpassword" method="post">
+                            <b>Username</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
+                            <input id="txtuname" name="username" type="text" /><br />
+                            <br />
+                            <b>Password</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <input id="Pwd" type="password" name="password" /><br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" id="frgtpswd">Forgot Password?</a>
 
-
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <input class="btn" id="login" type="button" value="Login" style="background-color:cornflowerblue; color:white" />
-
-
-
-
-                </fieldset>
-           
+                            <br />
+                            <br />
+                            <br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <input class="btn" id="login" type="button" value="Login" style="background-color:cornflowerblue; color:white"/>
+                        </form>
+                    </fieldset>
+                </div>
             </div>
-        </div>
+        
     </div>
 </body>
 </html>

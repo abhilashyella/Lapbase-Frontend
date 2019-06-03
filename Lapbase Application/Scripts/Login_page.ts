@@ -13,32 +13,13 @@
         if (txtuname.length != 0 && txtpwd.length != 0) {
 
            
-            @
-            while (!rs.eof) {
-
-                window.location.assign('WelcomePage.html');
-
-                a = 1;
-
-                rs.MoveNext();
-
-            }
-
-            if (a == 0) {
-
-                alert("Invalid UserName and Password");
-
-            }
-
-            rs.close();
-
-            connection.close();
+         
 
         }
 
         else {
 
-            alert("Please Enter Values in Textbox ");
+            alert("Please Enter Username and Password ");
 
         }
 
