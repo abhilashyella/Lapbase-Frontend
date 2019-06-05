@@ -161,7 +161,6 @@
     <Content Include="Content\final-header.png" />
     <Content Include="Content\Fonts.css" />
     <Content Include="Content\lapbase_header.png" />
-    <Content Include="Content\logo.gif" />
     <Content Include="Content\top_curve_edge.gif" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -170,7 +169,6 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Content\Master.css" />
-    <Content Include="Content\header-demos.png" />
     <Content Include="Content\man_visiting_doctor.gif" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -189,18 +187,20 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="Views\Account\Dashboard.cshtml" />
+    <Content Include="Views\Account\Login1.cshtml" />
+    <Content Include="Views\Account\Resetpassword.cshtml" />
+    <Content Include="Views\Account\resetSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
-  </ItemGroup>
-  <ItemGroup>
-    <TypeScriptCompile Include="Scripts\Login_page.ts" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

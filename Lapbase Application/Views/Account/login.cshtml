@@ -1,42 +1,56 @@
 ﻿@model Lapbase_Application.Models.test
-@{
-    ViewBag.Title = "Home Page";
-}
+    @{
+        ViewBag.Title = "Home Page";
+    }
 <html>
 <head>
-    <title>Lapbase Login</title>  
+    <title>Lapbase Login</title>
 </head>
 <body>
     <div class="container-1">
-    <div class="left">
-    </div>
-            <div class="right">
-                <div class="formbox">
-                    <fieldset style="font-size: medium; width: 356px;">
+        <div class="left">
+        </div>
+        <div class="right">
+            <div class="formbox">
+                <fieldset style="font-size: medium; width: 356px;">
 
-
-                        &nbsp;&nbsp;&nbsp; <legend style="font-size:larger"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Connect To LapBase</b></legend>
+                    <div style="position:absolute; left:990px; top:120px;">
+                        <label><b>Connect To LapBase</b></label>
                         <br />
-                        <form action="setusernameandpassword" method="post">
-                            <b>Username</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </div>
+                    @using (Html.BeginForm("AuthenticateUser", "Account"))
+                    {
+                    <div style="position:absolute; left:950px; top:200px;">
+                        <label>Username</label><br />
+                        <input id="txtuname" name="username" type="text" style="width:250px" /><br />
+                        @Html.ValidationMessageFor(a => a.username)
+                        <label>Password</label><br />
+                        <input id="Pwd" type="password" name="password" style="width:250px" /><br />
+                        @Html.ValidationMessageFor(a => a.password)
+                      
+                        <a href='@Url.Action("ResetPassword", "Account")' id="frgtpswd" name="forgotpassword" type="">Forgot Password?</a>
+                        
+                        <br />
+                        <br />
+                        <input class="btn" id="login" type="submit" value="Login" style="background-color:cornflowerblue; color:white" onclick="viewMessage()"/>
+                    </div>
+                    
+                    <script>
+                        function viewMessage() {
+                            var x = document.getElementById("mydiv");
+                            if (x.style.display === "none") {
+                                x.style.display = "block";
+                            } else {
+                                x.style.display = "none";
+                            }
+                        }
 
-
-                            <input id="txtuname" name="username" type="text" /><br />
-                            <br />
-                            <b>Password</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            <input id="Pwd" type="password" name="password" /><br />
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#" id="frgtpswd">Forgot Password?</a>
-
-                            <br />
-                            <br />
-                            <br />
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  <input class="btn" id="login" type="button" value="Login" style="background-color:cornflowerblue; color:white"/>
-                        </form>
+                    </script>
+                        
+                    }
                     </fieldset>
-                </div>
             </div>
-        
-    </div>
+            </div>
+        </div>
 </body>
 </html>

@@ -1,0 +1,46 @@
+﻿
+@{
+    Layout = null;
+}
+@model Lapbase_Application.Models.test
+@{
+    ViewBag.Title = "Home Page";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Master.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width" />
+    <title>ResetPassword</title>
+</head>
+<body>
+    <header class="header"></header>
+    <div class="container-1">
+        <div class="left">
+        </div>
+        <div class="right">
+            <div class="formbox">
+                <fieldset style="font-size: medium; width: 356px;">
+
+                    <div style="position:absolute; left:990px; top:120px;">
+                        <label><b>Connect To LapBase</b></label>
+                        <br />
+                    </div>
+                    @using (Html.BeginForm("BackToLogin", "Account"))
+                    {
+                        <div style="position:absolute; left:950px; top:200px;">
+                            <h6>Email sent successfully</h6><br />
+                            <br />
+                            <br />
+                            <input class="btn" id="login" type="submit" value="Login" style="background-color:cornflowerblue; color:white" />
+                        </div>
+                    }
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

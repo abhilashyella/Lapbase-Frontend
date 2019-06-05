@@ -1,0 +1,32 @@
+﻿@model Lapbase_Application.Models.test
+@{
+    Layout = null;
+}
+@{
+    ViewBag.Title = "Home Page";
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Master.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Dashboard</title>
+</head>
+<body>
+    <header class="header">
+        @using (Html.BeginForm("BackToLogin", "Account"))
+        {
+            <div style="position:absolute; left:1150px; top:4px;">
+                <input class="btn" id="logout" type="submit" value="LOGOUT" style="background-color:cornflowerblue; color:white" />
+            </div>
+
+        }
+    </header>
+    <div>
+        <h2 align="center">Welcome to Dashboard</h2>
+      
+    </div>
+</body>
+</html>
