@@ -1,0 +1,547 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="teamjModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="AppointmentID" />
+          </Key>
+          <Property Name="AppointmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientID" Type="int" />
+          <Property Name="DoctorName" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="dateApp" Type="date" Nullable="false" />
+          <Property Name="timeApp" Type="time" Precision="7" Nullable="false" />
+          <Property Name="CreatedData" Type="date" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="1" />
+          <Property Name="ModifiedData" Type="date" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="1" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Calories">
+          <Key>
+            <PropertyRef Name="CaloriesID" />
+          </Key>
+          <Property Name="CaloriesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientID" Type="int" />
+          <Property Name="BreakfastCal" Type="int" />
+          <Property Name="LunchCal" Type="int" />
+          <Property Name="DinnerCal" Type="int" />
+          <Property Name="CreatedData" Type="date" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="1" />
+          <Property Name="ModifiedData" Type="date" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="1" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Excercise">
+          <Key>
+            <PropertyRef Name="ExcerciseID" />
+          </Key>
+          <Property Name="ExcerciseID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientID" Type="int" />
+          <Property Name="ExcerciseName" Type="varchar" MaxLength="1" />
+          <Property Name="time" Type="time" Precision="7" />
+          <Property Name="CaloriesBurn" Type="int" />
+          <Property Name="CreatedData" Type="date" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="1" />
+          <Property Name="ModifiedData" Type="date" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="1" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Goals">
+          <Key>
+            <PropertyRef Name="GoalID" />
+          </Key>
+          <Property Name="GoalID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TargetID" Type="int" Nullable="false" />
+          <Property Name="TargetBMI" Type="int" Nullable="false" />
+          <Property Name="Target" Type="int" Nullable="false" />
+          <Property Name="Weight" Type="int" Nullable="false" />
+          <Property Name="CreatedData" Type="date" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="1" />
+          <Property Name="ModifiedData" Type="date" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="1" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="PatientID" />
+          </Key>
+          <Property Name="PatientID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DoctorID" Type="int" />
+          <Property Name="subscriptionID" Type="int" />
+          <Property Name="TargetID" Type="int" Nullable="false" />
+          <Property Name="ReprotID" Type="int" Nullable="false" />
+          <Property Name="AppointmentID" Type="int" />
+          <Property Name="ExerciseID" Type="int" />
+          <Property Name="CaloriesID" Type="int" />
+          <Property Name="WeightID" Type="int" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="FristName" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="SurName" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="Gender" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="DOB" Type="date" Nullable="false" />
+          <Property Name="Address" Type="varchar" MaxLength="1" />
+          <Property Name="Email" Type="varchar" MaxLength="1" />
+          <Property Name="HomePhone" Type="int" />
+          <Property Name="MobilePhone" Type="int" />
+          <Property Name="Ethnicity" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="FamilyStructure" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="EmploymentStatus" Type="varchar" MaxLength="1" />
+          <Property Name="Occupation" Type="varchar" MaxLength="1" />
+          <Property Name="ChildrenName" Type="varchar" MaxLength="1" />
+          <Property Name="ChildrenAge" Type="varchar" MaxLength="1" />
+          <Property Name="ChildrenGender" Type="varchar" MaxLength="1" />
+          <Property Name="CreatedData" Type="date" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="1" />
+          <Property Name="ModifiedData" Type="date" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="1" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="PatientWeightData">
+          <Key>
+            <PropertyRef Name="WeightID" />
+          </Key>
+          <Property Name="WeightID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientID" Type="int" Nullable="false" />
+          <Property Name="Height" Type="int" Nullable="false" />
+          <Property Name="StartWeight" Type="int" Nullable="false" />
+          <Property Name="IdealWeight" Type="int" Nullable="false" />
+          <Property Name="TargetBMI" Type="int" Nullable="false" />
+          <Property Name="BMIHeight" Type="int" Nullable="false" />
+          <Property Name="CreatedData" Type="date" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="1" />
+          <Property Name="ModifiedData" Type="date" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="1" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Report">
+          <Key>
+            <PropertyRef Name="ReportID" />
+          </Key>
+          <Property Name="ReportID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientID" Type="int" Nullable="false" />
+          <Property Name="Weight" Type="int" Nullable="false" />
+          <Property Name="Ideal" Type="int" Nullable="false" />
+          <Property Name="CreatedData" Type="date" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="1" />
+          <Property Name="ModifiedData" Type="date" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="1" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="subscription">
+          <Key>
+            <PropertyRef Name="subscriptionID" />
+          </Key>
+          <Property Name="subscriptionID" Type="int" Nullable="false" />
+          <Property Name="PatientID" Type="int" />
+          <Property Name="OrganisationCode" Type="varchar" MaxLength="1" />
+          <Property Name="IsValid" Type="bit" />
+          <Property Name="ValidFromDate" Type="date" />
+          <Property Name="ValidToDate" Type="date" />
+          <Property Name="IsDelete" Type="bit" />
+          <Property Name="CreatedData" Type="date" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="1" />
+          <Property Name="ModifiedData" Type="date" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="1" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityType Name="Target">
+          <Key>
+            <PropertyRef Name="TargetID" />
+          </Key>
+          <Property Name="TargetID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PatientID" Type="int" Nullable="false" />
+          <Property Name="GoalID" Type="int" Nullable="false" />
+          <Property Name="BMI" Type="int" Nullable="false" />
+          <Property Name="Weight" Type="int" Nullable="false" />
+          <Property Name="CreatedData" Type="date" />
+          <Property Name="CreatedBy" Type="varchar" MaxLength="1" />
+          <Property Name="ModifiedData" Type="date" />
+          <Property Name="ModifiedBy" Type="varchar" MaxLength="1" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="teamjModelStoreContainer">
+          <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="teamj" store:Type="Tables" />
+          <EntitySet Name="Calories" EntityType="Self.Calories" Schema="teamj" store:Type="Tables" />
+          <EntitySet Name="Excercise" EntityType="Self.Excercise" Schema="teamj" store:Type="Tables" />
+          <EntitySet Name="Goals" EntityType="Self.Goals" Schema="teamj" store:Type="Tables" />
+          <EntitySet Name="Patient" EntityType="Self.Patient" Schema="teamj" store:Type="Tables" />
+          <EntitySet Name="PatientWeightData" EntityType="Self.PatientWeightData" Schema="teamj" store:Type="Tables" />
+          <EntitySet Name="Report" EntityType="Self.Report" Schema="teamj" store:Type="Tables" />
+          <EntitySet Name="subscription" EntityType="Self.subscription" Schema="teamj" store:Type="Tables" />
+          <EntitySet Name="Target" EntityType="Self.Target" Schema="teamj" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="teamjModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Appointment">
+          <Key>
+            <PropertyRef Name="AppointmentID" />
+          </Key>
+          <Property Name="AppointmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientID" Type="Int32" />
+          <Property Name="DoctorName" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dateApp" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="timeApp" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="CreatedData" Type="DateTime" Precision="0" />
+          <Property Name="CreatedBy" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedData" Type="DateTime" Precision="0" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Calorie">
+          <Key>
+            <PropertyRef Name="CaloriesID" />
+          </Key>
+          <Property Name="CaloriesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientID" Type="Int32" />
+          <Property Name="BreakfastCal" Type="Int32" />
+          <Property Name="LunchCal" Type="Int32" />
+          <Property Name="DinnerCal" Type="Int32" />
+          <Property Name="CreatedData" Type="DateTime" Precision="0" />
+          <Property Name="CreatedBy" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedData" Type="DateTime" Precision="0" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Excercise">
+          <Key>
+            <PropertyRef Name="ExcerciseID" />
+          </Key>
+          <Property Name="ExcerciseID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientID" Type="Int32" />
+          <Property Name="ExcerciseName" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="time" Type="Time" Precision="7" />
+          <Property Name="CaloriesBurn" Type="Int32" />
+          <Property Name="CreatedData" Type="DateTime" Precision="0" />
+          <Property Name="CreatedBy" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedData" Type="DateTime" Precision="0" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Goal">
+          <Key>
+            <PropertyRef Name="GoalID" />
+          </Key>
+          <Property Name="GoalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TargetID" Type="Int32" Nullable="false" />
+          <Property Name="TargetBMI" Type="Int32" Nullable="false" />
+          <Property Name="Target" Type="Int32" Nullable="false" />
+          <Property Name="Weight" Type="Int32" Nullable="false" />
+          <Property Name="CreatedData" Type="DateTime" Precision="0" />
+          <Property Name="CreatedBy" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedData" Type="DateTime" Precision="0" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Patient">
+          <Key>
+            <PropertyRef Name="PatientID" />
+          </Key>
+          <Property Name="PatientID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DoctorID" Type="Int32" />
+          <Property Name="subscriptionID" Type="Int32" />
+          <Property Name="TargetID" Type="Int32" Nullable="false" />
+          <Property Name="ReprotID" Type="Int32" Nullable="false" />
+          <Property Name="AppointmentID" Type="Int32" />
+          <Property Name="ExerciseID" Type="Int32" />
+          <Property Name="CaloriesID" Type="Int32" />
+          <Property Name="WeightID" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FristName" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SurName" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="DOB" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Address" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="HomePhone" Type="Int32" />
+          <Property Name="MobilePhone" Type="Int32" />
+          <Property Name="Ethnicity" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FamilyStructure" Type="String" MaxLength="1" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EmploymentStatus" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="Occupation" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ChildrenName" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ChildrenAge" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ChildrenGender" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedData" Type="DateTime" Precision="0" />
+          <Property Name="CreatedBy" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedData" Type="DateTime" Precision="0" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="PatientWeightData">
+          <Key>
+            <PropertyRef Name="WeightID" />
+          </Key>
+          <Property Name="WeightID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientID" Type="Int32" Nullable="false" />
+          <Property Name="Height" Type="Int32" Nullable="false" />
+          <Property Name="StartWeight" Type="Int32" Nullable="false" />
+          <Property Name="IdealWeight" Type="Int32" Nullable="false" />
+          <Property Name="TargetBMI" Type="Int32" Nullable="false" />
+          <Property Name="BMIHeight" Type="Int32" Nullable="false" />
+          <Property Name="CreatedData" Type="DateTime" Precision="0" />
+          <Property Name="CreatedBy" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedData" Type="DateTime" Precision="0" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Report">
+          <Key>
+            <PropertyRef Name="ReportID" />
+          </Key>
+          <Property Name="ReportID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientID" Type="Int32" Nullable="false" />
+          <Property Name="Weight" Type="Int32" Nullable="false" />
+          <Property Name="Ideal" Type="Int32" Nullable="false" />
+          <Property Name="CreatedData" Type="DateTime" Precision="0" />
+          <Property Name="CreatedBy" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedData" Type="DateTime" Precision="0" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="subscription">
+          <Key>
+            <PropertyRef Name="subscriptionID" />
+          </Key>
+          <Property Name="subscriptionID" Type="Int32" Nullable="false" />
+          <Property Name="PatientID" Type="Int32" />
+          <Property Name="OrganisationCode" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="IsValid" Type="Boolean" />
+          <Property Name="ValidFromDate" Type="DateTime" Precision="0" />
+          <Property Name="ValidToDate" Type="DateTime" Precision="0" />
+          <Property Name="IsDelete" Type="Boolean" />
+          <Property Name="CreatedData" Type="DateTime" Precision="0" />
+          <Property Name="CreatedBy" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedData" Type="DateTime" Precision="0" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Target">
+          <Key>
+            <PropertyRef Name="TargetID" />
+          </Key>
+          <Property Name="TargetID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PatientID" Type="Int32" Nullable="false" />
+          <Property Name="GoalID" Type="Int32" Nullable="false" />
+          <Property Name="BMI" Type="Int32" Nullable="false" />
+          <Property Name="Weight" Type="Int32" Nullable="false" />
+          <Property Name="CreatedData" Type="DateTime" Precision="0" />
+          <Property Name="CreatedBy" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="ModifiedData" Type="DateTime" Precision="0" />
+          <Property Name="ModifiedBy" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+        </EntityType>
+        <EntityContainer Name="teamjEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Appointments" EntityType="Self.Appointment" />
+          <EntitySet Name="Calories" EntityType="Self.Calorie" />
+          <EntitySet Name="Excercises" EntityType="Self.Excercise" />
+          <EntitySet Name="Goals" EntityType="Self.Goal" />
+          <EntitySet Name="Patients" EntityType="Self.Patient" />
+          <EntitySet Name="PatientWeightDatas" EntityType="Self.PatientWeightData" />
+          <EntitySet Name="Reports" EntityType="Self.Report" />
+          <EntitySet Name="subscriptions" EntityType="Self.subscription" />
+          <EntitySet Name="Targets" EntityType="Self.Target" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="teamjModelStoreContainer" CdmEntityContainer="teamjEntities">
+          <EntitySetMapping Name="Appointments">
+            <EntityTypeMapping TypeName="teamjModel.Appointment">
+              <MappingFragment StoreEntitySet="Appointment">
+                <ScalarProperty Name="AppointmentID" ColumnName="AppointmentID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
+                <ScalarProperty Name="dateApp" ColumnName="dateApp" />
+                <ScalarProperty Name="timeApp" ColumnName="timeApp" />
+                <ScalarProperty Name="CreatedData" ColumnName="CreatedData" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedData" ColumnName="ModifiedData" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Calories">
+            <EntityTypeMapping TypeName="teamjModel.Calorie">
+              <MappingFragment StoreEntitySet="Calories">
+                <ScalarProperty Name="CaloriesID" ColumnName="CaloriesID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="BreakfastCal" ColumnName="BreakfastCal" />
+                <ScalarProperty Name="LunchCal" ColumnName="LunchCal" />
+                <ScalarProperty Name="DinnerCal" ColumnName="DinnerCal" />
+                <ScalarProperty Name="CreatedData" ColumnName="CreatedData" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedData" ColumnName="ModifiedData" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Excercises">
+            <EntityTypeMapping TypeName="teamjModel.Excercise">
+              <MappingFragment StoreEntitySet="Excercise">
+                <ScalarProperty Name="ExcerciseID" ColumnName="ExcerciseID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="ExcerciseName" ColumnName="ExcerciseName" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="CaloriesBurn" ColumnName="CaloriesBurn" />
+                <ScalarProperty Name="CreatedData" ColumnName="CreatedData" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedData" ColumnName="ModifiedData" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Goals">
+            <EntityTypeMapping TypeName="teamjModel.Goal">
+              <MappingFragment StoreEntitySet="Goals">
+                <ScalarProperty Name="GoalID" ColumnName="GoalID" />
+                <ScalarProperty Name="TargetID" ColumnName="TargetID" />
+                <ScalarProperty Name="TargetBMI" ColumnName="TargetBMI" />
+                <ScalarProperty Name="Target" ColumnName="Target" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="CreatedData" ColumnName="CreatedData" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedData" ColumnName="ModifiedData" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Patients">
+            <EntityTypeMapping TypeName="teamjModel.Patient">
+              <MappingFragment StoreEntitySet="Patient">
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="DoctorID" ColumnName="DoctorID" />
+                <ScalarProperty Name="subscriptionID" ColumnName="subscriptionID" />
+                <ScalarProperty Name="TargetID" ColumnName="TargetID" />
+                <ScalarProperty Name="ReprotID" ColumnName="ReprotID" />
+                <ScalarProperty Name="AppointmentID" ColumnName="AppointmentID" />
+                <ScalarProperty Name="ExerciseID" ColumnName="ExerciseID" />
+                <ScalarProperty Name="CaloriesID" ColumnName="CaloriesID" />
+                <ScalarProperty Name="WeightID" ColumnName="WeightID" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="FristName" ColumnName="FristName" />
+                <ScalarProperty Name="SurName" ColumnName="SurName" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="DOB" ColumnName="DOB" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="HomePhone" ColumnName="HomePhone" />
+                <ScalarProperty Name="MobilePhone" ColumnName="MobilePhone" />
+                <ScalarProperty Name="Ethnicity" ColumnName="Ethnicity" />
+                <ScalarProperty Name="FamilyStructure" ColumnName="FamilyStructure" />
+                <ScalarProperty Name="EmploymentStatus" ColumnName="EmploymentStatus" />
+                <ScalarProperty Name="Occupation" ColumnName="Occupation" />
+                <ScalarProperty Name="ChildrenName" ColumnName="ChildrenName" />
+                <ScalarProperty Name="ChildrenAge" ColumnName="ChildrenAge" />
+                <ScalarProperty Name="ChildrenGender" ColumnName="ChildrenGender" />
+                <ScalarProperty Name="CreatedData" ColumnName="CreatedData" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedData" ColumnName="ModifiedData" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PatientWeightDatas">
+            <EntityTypeMapping TypeName="teamjModel.PatientWeightData">
+              <MappingFragment StoreEntitySet="PatientWeightData">
+                <ScalarProperty Name="WeightID" ColumnName="WeightID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="Height" ColumnName="Height" />
+                <ScalarProperty Name="StartWeight" ColumnName="StartWeight" />
+                <ScalarProperty Name="IdealWeight" ColumnName="IdealWeight" />
+                <ScalarProperty Name="TargetBMI" ColumnName="TargetBMI" />
+                <ScalarProperty Name="BMIHeight" ColumnName="BMIHeight" />
+                <ScalarProperty Name="CreatedData" ColumnName="CreatedData" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedData" ColumnName="ModifiedData" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reports">
+            <EntityTypeMapping TypeName="teamjModel.Report">
+              <MappingFragment StoreEntitySet="Report">
+                <ScalarProperty Name="ReportID" ColumnName="ReportID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="Ideal" ColumnName="Ideal" />
+                <ScalarProperty Name="CreatedData" ColumnName="CreatedData" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedData" ColumnName="ModifiedData" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="subscriptions">
+            <EntityTypeMapping TypeName="teamjModel.subscription">
+              <MappingFragment StoreEntitySet="subscription">
+                <ScalarProperty Name="subscriptionID" ColumnName="subscriptionID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="OrganisationCode" ColumnName="OrganisationCode" />
+                <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+                <ScalarProperty Name="ValidFromDate" ColumnName="ValidFromDate" />
+                <ScalarProperty Name="ValidToDate" ColumnName="ValidToDate" />
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+                <ScalarProperty Name="CreatedData" ColumnName="CreatedData" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedData" ColumnName="ModifiedData" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Targets">
+            <EntityTypeMapping TypeName="teamjModel.Target">
+              <MappingFragment StoreEntitySet="Target">
+                <ScalarProperty Name="TargetID" ColumnName="TargetID" />
+                <ScalarProperty Name="PatientID" ColumnName="PatientID" />
+                <ScalarProperty Name="GoalID" ColumnName="GoalID" />
+                <ScalarProperty Name="BMI" ColumnName="BMI" />
+                <ScalarProperty Name="Weight" ColumnName="Weight" />
+                <ScalarProperty Name="CreatedData" ColumnName="CreatedData" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ModifiedData" ColumnName="ModifiedData" />
+                <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

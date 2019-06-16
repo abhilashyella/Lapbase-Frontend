@@ -19,7 +19,7 @@ namespace Lapbase_Application.Controllers
     public class AccountController : Controller
     {
         test t1 = new test();
-        
+
         [HttpGet]
         public ActionResult Login()
         {
@@ -27,8 +27,8 @@ namespace Lapbase_Application.Controllers
         }
         public ActionResult Dashboard()
         {
-            return View();    
-            
+            return View();
+
         }
         public ActionResult Login1()
         {
@@ -49,14 +49,15 @@ namespace Lapbase_Application.Controllers
         [HttpPost]
         public ActionResult AuthenticateUser(String username, String password)
         {
-           
+
             string domainName = System.Configuration.ConfigurationManager.AppSettings["Domain Name"];
             string domainAndUsername = string.Format(@"{0}\{1}", domainName, username);
             string ldapPath = string.Format("LDAP://" + domainName);
             Boolean userMustChangePassword = false;
             Boolean userAccountIsExpired = false;
             bool authentic = false;
-            
+
+
             try
 
             {
@@ -89,6 +90,11 @@ namespace Lapbase_Application.Controllers
 
                     authentic = true;
 
+                  //  if(authorization(username))
+                  //  {
+                    //    authentic = false;
+                 //   }
+
                 }
                 else
                 {
@@ -108,65 +114,85 @@ namespace Lapbase_Application.Controllers
             }
             catch (Exception ex)
             {
-  
+
                 return RedirectToAction("Login1", "Account");
 
             }
             return View(t1);
         }
 
-    
 
 
-    public ActionResult ResetPass(string username)
-    {
-        // if (ModelState.IsValid)
+
+        public ActionResult ResetPass(string username)
         {
+            // if (ModelState.IsValid)
+            {
 
-            // if (WebSecurity.UserExists(UserEmail))
-            //  {
-            string To = username;
+                // if (WebSecurity.UserExists(UserEmail))
+                //  {
+                string To = username;
 
-            //HTML Template for Send email  
+                //HTML Template for Send email  
 
-            string subject = "Lapbase Account Reset Password";
-            string body = "Please find the Password Reset Link below:";
-            //Call send email methods.  
-            EmailManager.SendEmail(subject, body, To);
-            return RedirectToAction("resetSuccess", "Account");
+                string subject = "Lapbase Account Reset Password";
+                string body = "Please find the Password Reset Link below:";
+                //Call send email methods.  
+                EmailManager.SendEmail(subject, body, To);
+                return RedirectToAction("resetSuccess", "Account");
             }
 
-    }
-    //  return View();
+        }
+        //  return View();
 
 
 
 
-    public class EmailManager
-    {
-
-        public static void SendEmail(string Subject, string Body, string To)
+        public class EmailManager
         {
-            string EmailID = System.Configuration.ConfigurationManager.AppSettings["EmailID"];
-            string EmailPass = System.Configuration.ConfigurationManager.AppSettings["EmailPass"];
-            string SMTPPort = System.Configuration.ConfigurationManager.AppSettings["SMTPPort"];
-            string Host = System.Configuration.ConfigurationManager.AppSettings["Host"];
-            System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage();
-            mail.To.Add(To);
-            mail.From = new MailAddress(EmailID);
-            mail.Subject = Subject;
-            mail.Body = Body;
-            SmtpClient smtp = new SmtpClient();
-            smtp.Host = Host;
-            smtp.Port = Convert.ToInt16(SMTPPort);
-            smtp.Credentials = new NetworkCredential(EmailID, EmailPass);
-            smtp.EnableSsl = true;
-            smtp.Send(mail);
-            
+
+            public static void SendEmail(string Subject, string Body, string To)
+            {
+                string EmailID = System.Configuration.ConfigurationManager.AppSettings["EmailID"];
+                string EmailPass = System.Configuration.ConfigurationManager.AppSettings["EmailPass"];
+                string SMTPPort = System.Configuration.ConfigurationManager.AppSettings["SMTPPort"];
+                string Host = System.Configuration.ConfigurationManager.AppSettings["Host"];
+                System.Net.Mail.MailMessage mail = new System.Net.Mail.MailMessage();
+                mail.To.Add(To);
+                mail.From = new MailAddress(EmailID);
+                mail.Subject = Subject;
+                mail.Body = Body;
+                SmtpClient smtp = new SmtpClient();
+                smtp.Host = Host;
+                smtp.Port = Convert.ToInt16(SMTPPort);
+                smtp.Credentials = new NetworkCredential(EmailID, EmailPass);
+                smtp.EnableSsl = true;
+                smtp.Send(mail);
+
             }
+        }
+
+        public bool authorization(String username)
+        {
+            subscription o2 = new subscription();
+            if (ModelState.IsValid)
+            {
+                if (o2.PatientID.Equals(username))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            else
+            {
+                return false;
+            }
+
+        }
+
     }
-
-}
-
 }
 
